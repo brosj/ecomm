@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
-import Link from 'next/link'
+import React from "react";
+import Link from "next/link";
 
 export default function ProductItem({ product }) {
   return (
@@ -28,5 +28,5 @@ export default function ProductItem({ product }) {
         </button>
       </div>
     </div>
-  )
+  );
 }
