@@ -9,9 +9,11 @@ export default function LoginScreen() {
     register,
     formState: { errors },
   } = useForm();
+
   const submitHandler = ({ email, password }) => {
     console.log(email, password);
   };
+
   return (
     <Layout title="Login">
       <form
@@ -35,29 +37,31 @@ export default function LoginScreen() {
             autoFocus
           ></input>
           {errors.email && (
-            <div className="text-red-500">{errors.email.message}</div>
+            <div className="text-red-500 mt-1">{errors.email.message}</div>
           )}
         </div>
+
         <div className="mb-4">
           <label htmlFor="password">Password</label>
           <input
             type="password"
             {...register("password", {
               required: "Please enter password",
-              minLength: { value: 6, message: "password is more than 5 chars" },
+              minLength: { value: 6, message: "password requires 6 or more characters" },
             })}
             className="w-full"
             id="password"
             autoFocus
           ></input>
           {errors.password && (
-            <div className="text-red-500 ">{errors.password.message}</div>
+            <div className="text-red-500 mt-1">{errors.password.message}</div>
           )}
         </div>
-        <div className="mb-4 ">
+
+        <div className="mb-4">
           <button className="primary-button">Login</button>
         </div>
-        <div className="mb-4 ">
+        <div className="mb-4">
           Don&apos;t have an account? &nbsp;
           <Link href="register">Register</Link>
         </div>
