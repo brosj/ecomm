@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
-import data from "../../utils/data";
+import data from "../../utils/data"; 
 import Layout from "../../components/Layout";
 import { Store } from "../../utils/Store";
 
 export default function ProductScreen() {
   const { state, dispatch } = useContext(Store);
+  const router = useRouter();
   const { query } = useRouter();
   const { slug } = query;
   const product = data.products.find((prod) => prod.slug === slug);
@@ -28,6 +29,8 @@ export default function ProductScreen() {
       type: "ADD_TO_CART",
       payload: { ...product, quantity },
     });
+
+    router.push("/cart");
   }
 
   return (
