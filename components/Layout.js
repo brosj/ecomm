@@ -3,7 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { Menu } from "@headlessui/react";
+import "react-toastify/dist/ReactToastify.css";
 import { Store } from "../utils/Store";
 
 export default function Layout({ title, children }) {
@@ -50,13 +51,16 @@ export default function Layout({ title, children }) {
               {status === "loading" ? (
                 "Loading..."
               ) : session?.user ? (
-                session.user.name
+                <Menu as="div" className="relative inline-block">
+                  <Menu.Button className="text-blue-600">
+                    {session.user.name}
+                  </Menu.Button>
+                </Menu>
               ) : (
                 <Link href="/login">
                   <a className="p-2">Login</a>
                 </Link>
               )}
-
             </div>
           </nav>
         </header>
